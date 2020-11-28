@@ -13,3 +13,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('companies','Admin\CompanyController');
 Route::resource('operators','Admin\OperatorController');
 Route::resource('clients','Admin\ClientController');
+Route::resource('drivers','Admin\DriverController');
