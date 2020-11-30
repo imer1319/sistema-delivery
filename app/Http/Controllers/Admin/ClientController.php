@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientCreateRequest;
+use App\Http\Requests\ClientUpdateRequest;
 use App\Client;
 use App\Company;
 
@@ -21,7 +23,7 @@ class ClientController extends Controller
         return view('administracion.clients.create', compact('companies'));
     }
 
-    public function store(Request $request)
+    public function store(ClientCreateRequest $request)
     {
         $client = Client::create($request->all());
         return redirect()->route('clients.edit', $client->id);
@@ -40,7 +42,7 @@ class ClientController extends Controller
         return view('administracion.clients.edit',compact('client','companies'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ClientUpdateRequest $request, $id)
     {
         $client = Client::find($id);
         $client->fill($request->all())->save();
