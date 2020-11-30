@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\DriverUpdateRequest;
+use App\Http\Requests\DriverCreateRequest;
 use App\Driver;
 use App\Company;
 
@@ -21,7 +23,7 @@ class DriverController extends Controller
         return view('administracion.drivers.create', compact('companies'));
     }
 
-    public function store(Request $request)
+    public function store(DriverCreateRequest $request)
     {
         $driver = Driver::create($request->all());
         return redirect()->route('drivers.edit', $driver->id);
@@ -40,7 +42,7 @@ class DriverController extends Controller
         return view('administracion.drivers.edit',compact('driver','companies'));
     }
 
-    public function update(Request $request, $id)
+    public function update(DriverUpdateRequest $request, $id)
     {
         $driver = Driver::find($id);
         $driver->fill($request->all())->save();

@@ -22,6 +22,7 @@
 	<label>
 		{{ Form::radio('estado', 'inactivo') }} Inactivo
 	</label>
+	@error('estado') <span class="text-danger error">{{ $message }}</span>@enderror
 </div>
 <div class="form-group">
 	{{ Form::label('company_id', 'Empresa') }}
