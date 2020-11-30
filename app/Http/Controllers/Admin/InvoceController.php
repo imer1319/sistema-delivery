@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Invoce;
 use App\Company;
@@ -23,7 +24,7 @@ class InvoceController extends Controller
         $invoces      = Invoce::get();
         $companies    = Company::orderBy('name','ASC')->pluck('name','id');
         $drivers      = Driver::orderBy('name','ASC')->pluck('name','id');
-        $users        = User::orderBy('name','ASC')->pluck('name','id');
+        $users        = User::where('id' ,'!=',1)->orderBy('name','ASC')->pluck('name','id');
         $clients      = Client::orderBy('name','ASC')->pluck('name','id');
         $restaurants  = Restaurant::orderBy('name','ASC')->get();
         return view('administracion.invoces.create',
@@ -42,7 +43,7 @@ class InvoceController extends Controller
         $invoce      = Invoce::find($id);
         $companies    = Company::orderBy('name','ASC')->pluck('name','id');
         $drivers      = Driver::orderBy('name','ASC')->pluck('name','id');
-        $users        = User::orderBy('name','ASC')->pluck('name','id');
+        $users        = User::where('id' ,'!=',1)->orderBy('name','ASC')->pluck('name','id');
         $clients      = Client::orderBy('name','ASC')->pluck('name','id');
         $restaurants  = Restaurant::orderBy('name','ASC')->get();
         return view('administracion.invoces.edit', 

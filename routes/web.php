@@ -15,3 +15,4 @@ Route::resource('operators','Admin\OperatorController');
 Route::resource('clients','Admin\ClientController');
 Route::resource('drivers','Admin\DriverController');
 Route::resource('restaurants','Admin\RestaurantController');
+Route::resource('invoces','Admin\InvoceController');

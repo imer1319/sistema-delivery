@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use App\Company;
 
 class CompanyController extends Controller
@@ -19,7 +21,7 @@ class CompanyController extends Controller
         return view('administracion.companies.create');
     }
 
-    public function store(Request $request)
+    public function store(CompanyCreateRequest $request)
     {
         $company = Company::create($request->all());
         return redirect()->route('companies.edit', $company->id);
@@ -37,7 +39,7 @@ class CompanyController extends Controller
         return view('administracion.companies.edit',compact('company'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CompanyUpdateRequest $request, $id)
     {
         $company = Company::find($id);
         $company->fill($request->all())->save();
