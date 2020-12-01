@@ -24,8 +24,7 @@ class OperatorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          =>'required',
-            'phone'         =>'required|numeric',
+            'name'          =>'required|unique:users,name,'.$this->operator,
             'company_id'    =>'required|exists:companies,id'
         ];
     }

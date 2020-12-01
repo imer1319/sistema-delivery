@@ -8,7 +8,6 @@
                 <div class="card-header">Operador {{ $operator->name }}</div>
                 <div class="card-body">
                     <strong>Nombre: </strong> {{ $operator->name }}<br>
-                    <strong>Contraseña: </strong> {{ $operator->password }}<br>
                     <strong>Empresa: </strong> {{ $operator->company->name }}<br>
                     <a href="{{ route('operators.index') }}" class="btn btn-secondary btn-block">Regresar</a>
                 </div>

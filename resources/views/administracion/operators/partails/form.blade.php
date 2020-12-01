@@ -5,11 +5,6 @@
 	@error('name') <span class="text-danger error">{{ $message }}</span>@enderror
 </div>
 <div class="form-group">
-	{{ Form::label('password', 'Contraseña') }}
-	{{ Form::password('password', ['class' => 'form-control'.( $errors->has('password') ? ' is-invalid' : '' ),'placeholder' => 'Contraseña del operador']) }}
-	@error('password') <span class="text-danger error">{{ $message }}</span>@enderror
-</div>
-<div class="form-group">
 	{{ Form::label('company_id', 'Empresa') }}
 	{{ Form::select('company_id', $companies, null, ['class' => 'form-control'.( $errors->has('company_id') ? ' is-invalid' : '' ),]) }}
 	@error('company_id') <span class="text-danger error">{{ $message }}</span>@enderror

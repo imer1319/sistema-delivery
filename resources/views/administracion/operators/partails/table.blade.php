@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Contraseña</th>
+            <th>Empresa</th>
             <th colspan="3">Acciones</th>
         </tr>
     </thead>
@@ -10,7 +10,7 @@
         @foreach($operators as $operator)
         <tr>
             <td>{{ $operator->name }}</td>
-            <td>{{ $operator->password }}</td>
+            <td>{{ $operator->company->name }}</td>
             <td>
                 <div>
                     <a href="{{ route('operators.show',$operator->id) }}" class="btn btn-info btn-sm">Ver</a>

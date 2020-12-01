@@ -24,8 +24,7 @@ class OperatorCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          =>'required',
-            'password'      => 'required|string|min:8',
+            'name'          =>'required|unique:users',
             'company_id'    =>'required|exists:companies,id'
         ];
     }

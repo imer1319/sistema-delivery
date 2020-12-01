@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Editar formulario') }}</div>
 
                 <div class="card-body">
+                    <a href="{{ route('operators.password') }}" class="btn btn-sm btn btn-primary float-right">Cambiar mi contraseña</a>
                     {!!Form::model($operator, ['route' => ['operators.update', $operator->id],
                     'method' => 'PUT']) !!}
                     @include('administracion.operators.partails.form')
