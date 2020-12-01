@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\InvoceCreateRequest;
+use App\Http\Requests\InvoceUpdateRequest;
 use App\Invoce;
 use App\Company;
 use App\Client;
@@ -31,7 +33,7 @@ class InvoceController extends Controller
             compact('invoces','companies','drivers','users','clients','restaurants'));
     }
 
-    public function store(Request $request)
+    public function store(InvoceCreateRequest $request)
     {
         $invoce = Invoce::create($request->all());
         $invoce->restaurants()->attach($request->get('restaurants'));
@@ -50,7 +52,7 @@ class InvoceController extends Controller
             compact('invoce','companies','drivers','users','clients','restaurants'));
     }
 
-    public function update(Request $request, $id)
+    public function update(InvoceUpdateRequest $request, $id)
     {
         $invoce = Invoce::find($id);
         $invoce->fill($request->all())->save();
