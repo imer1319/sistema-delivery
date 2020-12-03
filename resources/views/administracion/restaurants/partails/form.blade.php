@@ -24,5 +24,5 @@
 </div>
 <div class="form-group">
 	{{ Form::submit('Guardar', ['class' => 'btn btn-primary btn-block']) }}
-	<a href="{{ route('companies.index') }}" class="btn btn-secondary btn-block mt-0">Cancelar</a>
+	<a href="{{ route('restaurants.index') }}" class="btn btn-secondary btn-block mt-0">Cancelar</a>
 </div>

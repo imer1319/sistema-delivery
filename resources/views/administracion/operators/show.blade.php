@@ -1,17 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.layout-admin')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">Operador {{ $operator->name }}</div>
-                <div class="card-body">
-                    <strong>Nombre: </strong> {{ $operator->name }}<br>
-                    <strong>Empresa: </strong> {{ $operator->company->name }}<br>
-                    <a href="{{ route('operators.index') }}" class="btn btn-secondary btn-block">Regresar</a>
-                </div>
+@section('admin-content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="breadcrumb-holder">
+                <h1 class="main-title float-left mb-3">Operador : {{ $operator->name }}</h1>
+                <div class="clearfix"></div>
             </div>
+        </div>
+    </div>
+
+    <div class="card pt-2">
+        <div class="card-body">
+            <p class="lead">
+                <strong>Nombre: </strong> {{ $operator->name }}<br>
+            </p>
+            <p class="lead">
+                <strong>Empresa: </strong> {{ $operator->company->name }}<br>
+            </p>
+            <a href="{{ route('operators.index') }}" class="btn btn-secondary btn-block">Regresar</a>
         </div>
     </div>
 </div>
