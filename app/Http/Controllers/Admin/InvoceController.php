@@ -23,14 +23,16 @@ class InvoceController extends Controller
 
     public function create()
     {
+        $restaurant_ids = [];
         $invoces      = Invoce::get();
         $companies    = Company::orderBy('name','ASC')->pluck('name','id');
         $drivers      = Driver::orderBy('name','ASC')->pluck('name','id');
         $users        = User::where('id' ,'!=',1)->orderBy('name','ASC')->pluck('name','id');
         $clients      = Client::orderBy('name','ASC')->pluck('name','id');
         $restaurants  = Restaurant::orderBy('name','ASC')->get();
+        
         return view('administracion.invoces.create',
-            compact('invoces','companies','drivers','users','clients','restaurants'));
+            compact('invoces','companies','drivers','users','clients','restaurants','restaurant_ids'));
     }
 
     public function store(InvoceCreateRequest $request)
@@ -42,14 +44,20 @@ class InvoceController extends Controller
 
     public function edit($id)
     {
+        $restaurant_ids = [];
         $invoce      = Invoce::find($id);
         $companies    = Company::orderBy('name','ASC')->pluck('name','id');
         $drivers      = Driver::orderBy('name','ASC')->pluck('name','id');
         $users        = User::where('id' ,'!=',1)->orderBy('name','ASC')->pluck('name','id');
         $clients      = Client::orderBy('name','ASC')->pluck('name','id');
         $restaurants  = Restaurant::orderBy('name','ASC')->get();
+
+        foreach($invoce->restaurants as $invos)
+        {
+            $restaurant_ids[] = $invos->id;
+        }
         return view('administracion.invoces.edit', 
-            compact('invoce','companies','drivers','users','clients','restaurants'));
+            compact('invoce','companies','drivers','users','clients','restaurants','restaurant_ids'));
     }
 
     public function update(InvoceUpdateRequest $request, $id)

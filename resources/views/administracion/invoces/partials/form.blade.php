@@ -50,16 +50,19 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Restaurante:</label><br>
-            @foreach($restaurants as $restaurant)
-            <label>
-                <div>
-                {{ Form::checkbox('restaurants[]', $restaurant->id) }}{{ $restaurant->name }}<br>
-                </div>
-            </label>
-            @endforeach
+            <select id="select2-restaurant" class="js-states form-control" name="restaurants[]" multiple>
+                @foreach ($restaurants as $restaurant)
+                    @if(in_array($restaurant->id, $restaurant_ids))
+                        <option value="{{ $restaurant->id }}" selected="true">{{ $restaurant->name }}</option>
+                    @else
+                    <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+                    @endif
+                @endforeach
+            </select>
             @error('restaurant') <span class="text-danger error">{{ $message }}</span>@enderror
         </div>
     </div>
+    
     <div class="col-md-12">
         <div class="form-group">
             {{ Form::submit('Guardar', ['class' => 'btn btn-primary btn-block']) }}
@@ -67,3 +70,10 @@
         </div>
     </div>
 </div>
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#select2-restaurant').select2();
+        });
+    </script>
+@endsection

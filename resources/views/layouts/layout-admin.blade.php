@@ -24,7 +24,7 @@
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet" type="text/css" />   
 
     <!-- BEGIN CSS for this page -->
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <!-- END CSS for this page -->
 
 </head>
@@ -193,8 +193,9 @@
     <script src="{{ asset('admin/assets/js/pikeadmin.js') }}"></script>
 
     <!-- BEGIN Java Script for this page -->
-
+    
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- END Java Script for this page -->
-
+    @yield('scripts')
 </body>
 </html>

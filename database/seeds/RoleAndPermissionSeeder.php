@@ -25,7 +25,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         /***** -- Usuarios -- *****/
         Permission::create(['name' => 'users.index']);
-        Permission::create(['name' => 'roles.create']);
+        Permission::create(['name' => 'users.create']);
         Permission::create(['name' => 'users.show']);
         Permission::create(['name' => 'users.edit']);
         Permission::create(['name' => 'users.destroy']);
